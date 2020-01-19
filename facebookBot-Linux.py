@@ -18,21 +18,21 @@ from selenium.webdriver.firefox.options import Options
 import pprint
 import os
 
+# Define environmental variable and credentials
 env_var = os.environ
 fb_user = (env_var['FB_USER'])
 fb_pass = (env_var['FB_PASS'])
 
-# Headless mode not currently working
+# Load firefox driver in headless mode.
 options = Options()
 options.headless = True
-# Load firefox driver. If using Chrome or another browser, that respective driver will need to be loaded.
 driver = webdriver.Firefox(options=options)
 driver.get('https://facebook.com')
+
 # Define the username, password, and login button fields
 emailElement = driver.find_element(By.XPATH,'.//*[@id="email"]')
 pwElement = driver.find_element(By.XPATH,'.//*[@id="pass"]')
 loginButton = driver.find_element(By.XPATH,'.//*[@id="loginbutton"]') 
-# Enter your credentials <INPUT YOUR CREDS HERE>. This of course can be improved upon by utilizing a more secure credential storing method...
 
 # Grab credentials from env_var and login
 emailElement.send_keys(fb_user)
